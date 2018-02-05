@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-#npm i
+npm i
 cd src/client
-#npm i
+npm i
 npm run build
 cd ../../
 node ./src/server/server

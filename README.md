@@ -6,6 +6,7 @@
     - Clone the Git repo
     - npm start
     - http://localhost:3001/
+    - Test - npm test from root folder
 
 ## API Specification
 
@@ -55,3 +56,4 @@
     - Add a new User
     - Edit Existing User
     - Delete Existing User
+    - Merge Users - API methods only

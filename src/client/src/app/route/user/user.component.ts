@@ -13,6 +13,7 @@ export class UserComponent implements OnInit {
     currentUser: User;
     jsonData: string;
     jsonDataIsValid: boolean;
+    mergeUsers: string[];
     constructor(private userService: UserService){
         this.addNew();
     }
@@ -25,6 +26,8 @@ export class UserComponent implements OnInit {
             this.currentUser = JSON.parse(this.jsonData);
             this.userService.saveUser(this.currentUser).subscribe(
                 response => {
+                    delete response.created;
+                    delete response.updated;
                     this.jsonData = JSON.stringify(response,null,4);
                     this.getUserList();
                 });
@@ -33,6 +36,8 @@ export class UserComponent implements OnInit {
     getUser(id:string){
         this.userService.getUser(id).subscribe(
             response => {
+                delete response.created;
+                delete response.updated;
                 this.jsonData = JSON.stringify(response,null,4);
             });
     }
@@ -50,8 +55,18 @@ export class UserComponent implements OnInit {
         this.jsonData = JSON.stringify(User._blank(),null,4);
         this.updateJsonData();
     }
+    clickMerge(){
+
+    }
     merge(){
 
+    }
+    deleteUser(userId: string){
+        this.userService.deleteUser(userId).subscribe(
+            () => {
+                this.getUserList();
+            }
+        )
     }
     private isJsonString(str:string) : boolean {
         try {

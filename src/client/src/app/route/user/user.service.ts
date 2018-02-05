@@ -55,4 +55,10 @@ export class UserService {
 
     }
 
+    deleteUser(userId: string){
+        return this.http.delete(this.api + this.usersUrl +'/'+ userId)
+            .map((res: Response) => res.json())
+            .share()
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
 }

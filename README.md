@@ -49,3 +49,9 @@
     - /api/v1/user/merge/:id1/:id2
     
     Will take 2 users and merge them into 1 record.  The orginal users are then deleted
+
+## Test Cases
+
+    - Add a new User
+    - Edit Existing User
+    - Delete Existing User

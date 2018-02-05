@@ -37,7 +37,8 @@
                     <td><a href="#" (click)="getUser(user.id)">{{ user.id }}</a></td>
                     <td><a href="#" (click)="getUser(user.id)">{{ user.name }}</a></td>
                     <td><a href="#" (click)="getUser(user.id)">{{ user.email }}</a></td>
-                    <td><input type="checkbox" value="{{ user.id }}" [(ngModel)]="merge"></td>
+                    <td><input type="checkbox" (click)="clickMerge(user.id)" value="{{ user.id }}"></td>
+                    <td><a href="#" (click)="deleteUser(user.id)">delete</a></td>
                 </tr>
             </tbody>
         </table>

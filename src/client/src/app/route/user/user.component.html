@@ -1,0 +1,46 @@
+<div class="tyn-home">
+    <h2>Add / Edit User</h2>
+    <div class="form-container">
+        <form (ngSubmit)="saveUser()" novalidate>
+            <textarea [class.valid]="jsonDataIsValid" [(ngModel)]="jsonData" (ngModelChange)="updateJsonData()" name="jsonData" #ctrl="ngModel" class="user" ></textarea>
+            <div>
+                <div>
+                    <p *ngIf="!jsonDataIsValid" class="error">JSON data is not valid</p>
+                    <p *ngIf="jsonDataIsValid">JSON Data is Valid</p>
+                </div>
+                <button [disabled]="!jsonDataIsValid" type="submit" >Save</button>
+                <button (click)="addNew()" type="button" >Add New</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Merge
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td><a href="#" (click)="getUser(user.id)">{{ user.id }}</a></td>
+                    <td><a href="#" (click)="getUser(user.id)">{{ user.name }}</a></td>
+                    <td><a href="#" (click)="getUser(user.id)">{{ user.email }}</a></td>
+                    <td><input type="checkbox" value="{{ user.id }}" [(ngModel)]="merge"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
